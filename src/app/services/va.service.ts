@@ -4,17 +4,17 @@ import { ApiService } from './api.service';
 @Injectable()
 export class VaService {
 
-    private baseUrl = 'https://ec2-18-117-143-246.us-east-2.compute.amazonaws.com:3000/api'
+    private baseUrl = ''
     // private baseUrl = ''
 
     constructor(private apiService: ApiService) { }
 
     createSession() {
-        return this.apiService.get(`${this.baseUrl}/createSession`);
+        return this.apiService.get(`${this.baseUrl}/api/createSession`);
     }
 
     sendMessages(data: any) {
         console.log(data)
-        return this.apiService.post(`${this.baseUrl}/sendMessages`, data);
+        return this.apiService.post(`${this.baseUrl}/api/sendMessages`, data);
     }
 }

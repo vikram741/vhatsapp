@@ -6,6 +6,7 @@ const {sendMessages, createSession} = require('./server/bot2');
 
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json({limit: '10mb'}));
 app.use(express.urlencoded({limit: '10mb', extended: true}));
 /** Point static path to dist */
@@ -17,6 +18,10 @@ app.get('/api/createSession', createSession);
 app.get('/api', (req, res)=>{
     res.send('hi');
 });
+
+// app.get('/', (req,res)=>{
+//     res.sendFile(path.join(__dirname, 'public/index.html'));
+// })
 
 
 /** Get port from environment and store in Express. */
@@ -30,6 +35,6 @@ app.set('port', port);
 const server = http.createServer(app);
 
 /** Listen on provided port, on all network interfaces. */
-server.listen(port, () => logger.info(`API running on localhost:${port}`));
+server.listen(port, () => console.log(`API running on localhost:${port}`));
 
 

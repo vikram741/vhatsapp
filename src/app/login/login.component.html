@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div *ngIf="loading">
+        <div class="dots-container">
+            <div class="pulse-dot pulse-dot-1"></div>
+            <div class="pulse-dot pulse-dot-2"></div>
+            <div class="pulse-dot pulse-dot-3"> </div>
+        </div>
+    </div>
+    <div *ngIf="!loading">
+        <qrcode [qrdata]="qrCode" [width]="512" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+    </div>
+
+    <br><br><br>
+    <button *ngIf="!loading" (click)="next()" type="button" class="btn btn-success">Next</button>
+</div>

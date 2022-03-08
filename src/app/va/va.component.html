@@ -1,0 +1,65 @@
+<div *ngIf="!loggedIn">
+    <app-login [loading]="loading" [qrCode]="qrCode" (goto)="loggedIn = true"></app-login>
+</div>
+
+<div *ngIf="loggedIn">
+    <div class="bar">
+        <b>vVhatsApp</b>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group d-flex">
+                    <label class="px-4" for="message"> <b> Message</b> </label>
+                    <textarea [(ngModel)]="message" class="form-control" rows=5 id="message"></textarea>
+                </div>
+                <br>
+                <div class="form-group d-flex">
+                    <label class="px-4" for="list"> <b> List</b> </label>
+                    <textarea [(ngModel)]="list" class="form-control" rows=10 id="list"></textarea>
+                </div>
+                <br>
+
+                <button style="float: right;" class="btn btn-success px-4" [disabled]="sending"
+                    (click)="sendMessage()">Send</button>
+
+            </div>
+
+            <div class="col-6">
+                <div *ngIf="sent">
+                    <div *ngIf="success">
+                        <h1>Failed list</h1>
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th> Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let num of failedList">
+                                    <td>{{num}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div *ngIf="!success">
+                        <div class="display-4 text-center text-danger">Some Error!</div>
+                        <div class="display-1 text-center"> ☹</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div *ngIf="!sent" class="mx-4 px-4">
+                    <h1>Write Message</h1>
+                    <h1>Add list</h1>
+                    <h1>Send Bulk</h1>
+                    <div class="display-4">Easy.</div>
+                </div> -->
+            <br><br><br><br>
+            <div *ngIf="sending" style="margin: auto;">
+                <div class="display-4">Sending..</div>
+            </div>
+        </div>
+
+    </div>
+</div>

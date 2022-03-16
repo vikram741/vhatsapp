@@ -19,9 +19,9 @@ app.get('/api', (req, res)=>{
     res.send('hi');
 });
 
-// app.get('/', (req,res)=>{
-//     res.sendFile(path.join(__dirname, 'public/index.html'));
-// })
+app.get('/', (req,res)=>{
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+})
 
 
 /** Get port from environment and store in Express. */

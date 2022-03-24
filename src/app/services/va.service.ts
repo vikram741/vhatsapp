@@ -5,7 +5,7 @@ import { ApiService } from './api.service';
 export class VaService {
 
     private baseUrl = ''
-    // private baseUrl = ''
+    // private baseUrl = 'http://localhost:3000'
 
     constructor(private apiService: ApiService) { }
 

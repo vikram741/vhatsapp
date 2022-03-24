@@ -29,7 +29,10 @@
             <div class="col-6">
                 <div *ngIf="sent">
                     <div *ngIf="success">
+
                         <h1>Failed list</h1>
+                        <button class="btn btn-success px-4" [disabled]="sending"
+                            (click)="copyMessage(failedList)">Copy</button>
                         <table class="styled-table">
                             <thead>
                                 <tr>

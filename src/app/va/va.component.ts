@@ -56,5 +56,19 @@ export class VaComponent implements OnInit {
 				console.log(err);
 			})
 	}
+
+	copyMessage(arr: any) {
+		const selBox = document.createElement('textarea');
+		selBox.style.position = 'fixed';
+		selBox.style.left = '0';
+		selBox.style.top = '0';
+		selBox.style.opacity = '0';
+		selBox.value = arr.join('\r\n');
+		document.body.appendChild(selBox);
+		selBox.focus();
+		selBox.select();
+		document.execCommand('copy');
+		document.body.removeChild(selBox);
+	}
 }
 

@@ -3,12 +3,16 @@ const {Client} = require('whatsapp-web.js');
 
 let client;
 let killClient = false;
+let timer = null;
 
 
 const createSession = async (req, res)=>{
     try {
         client = new Client({qrMaxRetries: 1});
         let killClient = true;
+        if(timer){
+            clearTimeout(timer);
+        }
 
         client.on('qr', (qr) => {
         // Generate and scan this code with your phone
@@ -19,12 +23,12 @@ const createSession = async (req, res)=>{
                     urlCode: qr,
                 },
             });
-            // setTimeout(()=>{
-            //     if(killClient){
-            //         console.log('Client Killed');
-            //         client.destroy();
-            //     }
-            // }, 20000)
+            timer = setTimeout(()=>{
+                if(killClient){
+                    console.log('Client Killed');
+                    client.destroy();
+                }
+            }, 120000)
         });
         client.on('authenticated', ()=>{
             killClient = false;

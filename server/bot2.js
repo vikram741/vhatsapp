@@ -9,7 +9,7 @@ let timer = null;
 const createSession = async (req, res)=>{
     try {
         client = new Client({qrMaxRetries: 1});
-        let killClient = true;
+        killClient = true;
         if(timer){
             clearTimeout(timer);
         }

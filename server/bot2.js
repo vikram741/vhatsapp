@@ -23,12 +23,12 @@ const createSession = async (req, res)=>{
                     urlCode: qr,
                 },
             });
-            timer = setTimeout(()=>{
-                if(killClient){
-                    console.log('Client Killed');
-                    client.destroy();
-                }
-            }, 120000)
+            // timer = setTimeout(()=>{
+            //     if(killClient){
+            //         console.log('Client Killed');
+            //         client.destroy();
+            //     }
+            // }, 120000)
         });
         client.on('authenticated', ()=>{
             killClient = false;
